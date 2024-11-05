@@ -153,6 +153,58 @@ This layer deals with everything outside of your application (like databases, AP
 - **Step 7**: Service to Controller --> The ProjectService sends the data back to the `ProjectsController`.
 - **Step 8**: Controller to Client --> Finally, the `ProjectsController` returns the data as an HTTP response to the user/client.
 
+
+### How to develop 
+
+#### Step 1: Domain Layer
+- Value Object define (AggregateRoot ID).
+- Enums define.
+- AggregateRoot define.
+- Events define.
+- Update AggregateRoot with events that are created. 
+- Errors define. 
+
+#### Step 2: Application Layer
+- Create endpoint filter. 
+- Implement CQRS pattern. (Commnads and Queries folder).
+  - **Commands** : 
+    - Create/Update/Delete (endpoints) folder. 
+      - (Inisde each there will be Command, Handler, Validator and Result file)
+        - Implement Result 
+        - Implement Command
+        - Implement Validator
+        - Define Query Params filter
+        - Define Interface
+        - Implement Handler 
+  - **Queries** : 
+    - Create folder for each Get endpoints (getById, GetAll and so on)
+    - (Inisde each there will be Queries, Handler and Result file)
+      - Implement Result
+      - Define Query Params filter if not already defined
+      - Implement Queries
+      - Define Validator
+      - Implement Handler
+
+#### Step 3: Infrastructure Layer
+- Add the aggregate to DBContext file
+- Define repository
+- Define DB Configuration
+- Add repository into the dependency injection file
+
+#### Step 4: Presentation Layer
+
+**Step 4.1 : Contracts Layer**
+- Make a folder for the endpoint
+  - Make Request and Response folder
+    - Define Request and Response DTO.
+
+**Step 4.2 : API Layer**
+- Define Mappers
+- Define Controllers
+
+
+`Now We need to do Migration and update database.`
+
 #### Flow Visualization
 
 ```plaintext
