@@ -157,15 +157,17 @@ This layer deals with everything outside of your application (like databases, AP
 ### How to develop 
 
 #### Step 1: Domain Layer
-- Value Object define (AggregateRoot ID).
+- Errors define. 
+- Value Object define (AggregateRoot ID) or Entity Ids.
 - Enums define.
+- Entity Define
 - AggregateRoot define.
 - Events define.
 - Update AggregateRoot with events that are created. 
-- Errors define. 
 
 #### Step 2: Application Layer
 - Create endpoint filter. 
+- Define Interface
 - Implement CQRS pattern. (Commnads and Queries folder).
   - **Commands** : 
     - Create/Update/Delete (endpoints) folder. 
@@ -174,7 +176,6 @@ This layer deals with everything outside of your application (like databases, AP
         - Implement Command
         - Implement Validator
         - Define Query Params filter
-        - Define Interface
         - Implement Handler 
   - **Queries** : 
     - Create folder for each Get endpoints (getById, GetAll and so on)
@@ -186,9 +187,9 @@ This layer deals with everything outside of your application (like databases, AP
       - Implement Handler
 
 #### Step 3: Infrastructure Layer
+- Define DB Configuration
 - Add the aggregate to DBContext file
 - Define repository
-- Define DB Configuration
 - Add repository into the dependency injection file
 
 #### Step 4: Presentation Layer
